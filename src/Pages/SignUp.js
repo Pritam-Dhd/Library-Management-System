@@ -1,79 +1,94 @@
-import React,{useState} from 'react'
-import {Link}   from 'react-router-dom';
+import React, { useState } from 'react';
+import './style.css';
+import { BrowserRouter, Route, Routes,Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
+
+
+
+
+// import {Link}   from 'react-router-dom';
+import
+{
+  MDBBtn,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+
+  MDBInput,
+MDBCheckbox
+}
+from 'mdb-react-ui-kit'
 
 const SignUp = () => {
-    const [fname,setFname]=useState('')
-    const [lname,setLname]=useState('')
-    const [address,setAddress]=useState('')
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+const [showPassword, setShowPassword] = useState(false);
 
-    const handlesubmit=(event)=>{
-        event.preventDefault();
-        setFname(event.target.value);
-        setLname(event.target.value);
-        setAddress(event.target.value);
-        setEmail(event.target.value);
-        setPassword(event.target.value);
 
-        console.log('First Name:',fname);
-        console.log('Last Name:',lname);
-        console.log('Address:',address);
-        console.log('Email:',email);
-        console.log('Password:',password);
-    }
-    return (
-        <>
-            <section className="vh-100" >
-                <div className="container py-5 h-100">
-                    <div className="row d-flex justify-content-center align-items-center h-100">
-                        <div className="col col-xl-10">
-                            <div className="card" >
-                                <div className="row g-0">
-                                    <div className="col-md-6 col-lg-5 d-none d-md-block">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
-                                        alt="login form" className="img-fluid"  />
-                                    </div>
-                                    <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                                        <div className="card-body p-4 p-lg-5 text-black">
-                                            <form action="get">
-                                                <h5 className="fw-normal mb-3 pb-3" >Sign up your account</h5>
-                                                <div className="form-outline mb-4">
-                                                    <label className="form-label" for="form2Example17">First Name</label>
-                                                    <input type="text" id="form2Example17" className="form-control form-control-lg" required onChange={(event) => setFname(event.target.value)}/>
-                                                </div>
-                                                <div className="form-outline mb-4">
-                                                    <label className="form-label" for="form2Example17">Last Name</label>
-                                                    <input type="text" id="form2Example17" className="form-control form-control-lg" required onChange={(event) => setLname(event.target.value)}/>
-                                                </div>
-                                                <div className="form-outline mb-4">
-                                                    <label className="form-label" for="form2Example17">Address</label>
-                                                    <input type="text" id="form2Example17" className="form-control form-control-lg" required onChange={(event) => setAddress(event.target.value)}/>
-                                                </div>
-                                                <div className="form-outline mb-4">
-                                                    <label className="form-label" for="form2Example17">Email address</label>
-                                                    <input type="email" placeholder="example@gmail.com"  id="form2Example17" className="form-control form-control-lg" required onChange={(event) => setEmail(event.target.value)}/>
-                                                </div>
-                                                <div className="form-outline mb-4">
-                                                    <label className="form-label" for="form2Example27">Password</label>
-                                                    <input type="password" id="form2Example27" className="form-control form-control-lg" required onChange={(event) => setPassword(event.target.value)}/>
-                                                </div>
-                                                <div className="pt-1 mb-4">
-                                                    <button className="btn btn-dark btn-lg btn-block" onClick={handlesubmit}>Login</button>
-                                                </div>
-                                                <p className="mb-5 pb-lg-2">Already have an account
-                                                    <Link to='/login'>Login</Link>
-                                                </p>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>
-    )
+const togglePassword = () =>{
+  setShowPassword(!showPassword);  
 }
+
+  return (
+    <MDBContainer  className='my-5'>
+      <MDBCard >
+
+        <MDBRow className='g-0'>
+          <MDBCol md='6 '>
+          <MDBCardImage src='https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7863.jpg?w=740&t=st=1677838566~exp=1677839166~hmac=a6906ec41585d1a68c1783b8d6a8411f6182d27ba1e463c6f3885c81042aeeb8' alt="login Image" className='rounded-1 w-100'/>
+          </MDBCol>
+
+          <MDBCol md='6  '>
+           <MDBCardBody className='d-flex flex-column  ' >
+           <div className=' d-flex flex-row ps-5 pt-5 txt' >
+           <span className='  h5 fw-mediam mb-0  '>Library management System </span>
+            <MDBCardImage src ='https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjMwNGExYjEyNzY1MGVjYTZmM2Y5ZGRmMDAzOTI5MGRhODQzMmYwNyZjdD1n/xT77Y1T0zY1gR5qe5O/giphy.gif' alt="login Image" className='rounded-1 wdth'/>
+           
+           </div>
+           <h5 className=' ps-5 fw-median my-4 pd-3 sign'>
+            Sign up now
+           </h5>
+           <div className='d-flex flex-row '>
+           <MDBInput wrapperClass='mb-4 mx-5 w-50 fw-bold  ' className='input-field form-group ' label='Full name'placeholder='Enter your name' id='formControlLg' type='text' size="lg" outline-0/>
+           <MDBInput wrapperClass='mb-4 mx-5 w-50 fw-bold  ' className='input-field form-group ' label='Phone number'placeholder='Enter phone no' id='formControlLg' type='text' size="lg" outline-0/>
+           </div>
+
+           <div  className='d-flex flex-column input-group '>
+
+           
+           <MDBInput wrapperClass='mb-4 mx-5 w-80 fw-bold  ' className='input-field form-group ' label='Email address'placeholder='Enter email address' id='formControlLg' type='email' size="lg" outline-0/>
+            <MDBInput wrapperClass='mb-4 mx-5 w-80 fw-bold ' className='input-field form-group' label='Password' id='formControlLg' placeholder='Enter password' type={ showPassword ? 'text' : 'password'} size="lg"/>
+            <span className="input-group-text" onClick={togglePassword}>
+            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </span>
+            
+            </div>
+           
+            <MDBBtn className='mb-4 mx-5 my-button' color='' size='lg' style={{ backgroundColor: '#40ABCE',border:'none' }} >
+           Sign up
+            </MDBBtn>
+
+            <div className='d-flex flex-column'>
+            <p className='text-center mb-5 pb-lg-2 text-secondary'>
+            Thank you for signing up
+            <div>or</div>
+           <a href="#!" style={{color: '#3B71CA'}}>
+              <Link to="/Login">Login</Link></a>
+
+            </p> 
+            </div>
+           
+           </MDBCardBody>
+          </MDBCol>
+        </MDBRow>
+
+      </MDBCard>
+      
+    </MDBContainer>
+  )
+}
+
 export default SignUp
